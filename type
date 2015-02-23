@@ -1,0 +1,89 @@
+#include <iostream>
+#include <iomanip>
+#include "clockType.h"
+
+using namespace std;
+
+void clockType::getTime(int& hours, int& minutes, int& seconds, int& month) const
+{
+	hours = hr;
+	minutes = min;
+	seconds = sec;
+	month = mon;
+}
+
+void clockType::printTime() const
+{
+if (hr < 10)
+
+    cout << "0";
+
+cout << hr << ":";
+
+if (min < 10)
+
+    cout << "0";
+
+cout << min << ":";
+
+if (sec < 10)
+
+   cout << "0";
+
+cout << sec;
+	
+}
+
+void clockType::incrementHours()
+{
+    hr++;
+    if (hr > 23)
+        hr = 0;
+}
+
+void clockType::incrementMinutes()
+{
+
+    min++;
+    if (min > 59)
+    {
+        min = 0;
+        incrementHours(); //increment hours
+	}
+}
+
+
+
+void  clockType::incrementSeconds()
+{
+
+     sec++;
+
+	 if (sec > 59)
+     {
+         sec = 0;
+         incrementMinutes(); //increment minutes
+	 }
+}
+
+
+void clockType::getMonth () const
+{ 
+	if ((mon >= 0) && (mon <=11))
+
+	cout<< "The current month is:" <<mon<<endl;
+
+	else 
+
+	cout<< "Please enter a valid month entry (0-11)"<<endl;
+
+}
+
+bool clockType::equalTime(const clockType& otherClock) const
+{
+
+return (hr == otherClock.hr
+        && min == otherClock.min
+        && sec == otherClock.sec);
+
+}
